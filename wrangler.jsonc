@@ -1,0 +1,19 @@
+/**
+ * Cloudflare Workers 静态资产部署配置（纯 SPA，无 Worker 脚本）。
+ *
+ * - `not_found_handling: "single-page-application"`：未命中静态文件的路径
+ *   一律返回 index.html，保证 /product/:id 这类客户端路由可直接访问、刷新不 404。
+ * - 资产请求在 Cloudflare 免费/付费计划下均不计费，静态站点零成本。
+ */
+{
+  "name": "meoo",
+  "compatibility_date": "2026-10-01",
+  "build": {
+    // Cloudflare Workers Builds 连接 GitHub 仓库后读取此配置；部署命令默认 npx wrangler deploy
+    "command": "pnpm build"
+  },
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}

@@ -1,0 +1,6 @@
+# 构建脚本审批：esbuild 的 postinstall 负责安装平台二进制，不批准会导致 vite build 失败。
+# allowBuilds 是 pnpm 11 的格式；onlyBuiltDependencies 兼容 pnpm 9/10（如 CI 环境用旧版）。
+allowBuilds:
+  esbuild: true
+onlyBuiltDependencies:
+  - esbuild
